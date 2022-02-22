@@ -1,0 +1,29 @@
+# -*- mode: Makefile -*-
+#
+# Copyright 2005 - 2006 Dominick Samperi
+# Copyright 2005        Uwe Ligges
+# Copyright 2008 - 2015 Dirk Eddelbuettel
+# Copyright 2011        Uwe Ligges, Brian Ripley, and Josh Ulrich
+
+## This assumes that we can call Rscript to ask Rcpp about its locations
+## Use the R_HOME indirection to support installations of multiple R version
+## Commented out as Rcpp 0.11.0 and later no longer require this
+#RCPP_LDFLAGS = $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e "Rcpp:::LdFlags()")
+
+## With R 2.12.0 and later, we also support 32 and 64 bit builds and need to differentiate
+
+# for debugging ...
+PKG_CXXFLAGS = -ggdb -O0 -Wall
+#CXXFLAGS += -ggdb -O0 -Wall
+##CXXFLAGS +=           -O3 -Wall -pipe -Wno-unused -pedantic
+
+PKG_CPPFLAGS=
+
+# for release ...
+#PKG_CXXFLAGS=-std=c++17 -fpermissive 
+
+
+PKG_LIBS=D:/Test/SoftwareInteroperability/StatsLibCB/bin/Debug/libStatsLib.a
+
+
+

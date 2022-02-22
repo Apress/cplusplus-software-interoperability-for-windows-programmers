@@ -1,0 +1,14 @@
+Package: StatsR
+Type: Package
+Title: Demo Wrapper for Native C++ StatsLib
+Version: 1.0
+Date: 2021-05-02
+Author: Adam Gladstone
+Maintainer: Adam Gladstone <my_email@mailserver.com>
+Description: Part of a series of components built to demonstrate aspects of binding code from different languages (C#, Python, R) to a C++ library.
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.5)
+LinkingTo: Rcpp
+SystemRequirements: C++17
+Suggests: 
+    testthat
