@@ -1,0 +1,50 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #e8f1f9; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+Results: {{ results }}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <td>Value</td>
+         </tr>
+        </thead>
+
+        {% for key, value in results.items() %}
+           <tr>
+                <th> {{ key }} </th>
+                <td> {{ value }} </td>
+           </tr>
+        {% endfor %}
+        </table>
+
+        <p></p>
+        <p></p>
+
+      <p><a href="{{ url_for('index') }}">Return to summary data t-test page</a></p>
+
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="StatsLibCB" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/StatsLib" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option parameters="--vanilla" />
+				<Option host_application='&quot;D:/R/R-4.0.3/bin/R.exe&quot;' />
+				<Option run_host_application_in_terminal="0" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-std=c++17" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/StatsLib" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add option="-std=c++17" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="../Common/include" />
+		</Compiler>
+		<Unit filename="../Common/include/DataManager.h" />
+		<Unit filename="../Common/include/DescriptiveStatistics.h" />
+		<Unit filename="../Common/include/StatisticalTests.h" />
+		<Unit filename="../Common/include/Stats.h" />
+		<Unit filename="../Common/include/TimeSeries.h" />
+		<Unit filename="../Common/source/DataManager.cpp" />
+		<Unit filename="../Common/source/DescriptiveStatistics.cpp" />
+		<Unit filename="../Common/source/StatisticalTests.cpp" />
+		<Unit filename="../Common/source/Stats.cpp" />
+		<Unit filename="../Common/source/TimeSeries.cpp" />
+		<Extensions>
+			<code_completion>
+				<search_path add="..\..\..\..\Libraries\boost_1_76_0" />
+			</code_completion>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

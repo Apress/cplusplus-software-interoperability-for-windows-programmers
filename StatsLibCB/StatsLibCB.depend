@@ -1,0 +1,62 @@
+# depslib dependency file v1.0
+1633676100 source:d:\development\projects\c++\softwareinteroperability\common\source\datamanager.cpp
+	<stdexcept>
+	"DataManager.h"
+
+1635765457 d:\development\projects\c++\softwareinteroperability\common\include\stats.h
+	<vector>
+	<string>
+	<utility>
+	<unordered_map>
+
+1633676100 d:\development\projects\c++\softwareinteroperability\common\include\datamanager.h
+	<string>
+	<vector>
+	<utility>
+	<unordered_map>
+
+1635068706 source:d:\development\projects\c++\softwareinteroperability\common\source\descriptivestatistics.cpp
+	<numeric>
+	<functional>
+	<algorithm>
+	<utility>
+	<type_traits>
+	<stdexcept>
+	<map>
+	<cmath>
+	<boost/math/statistics/univariate_statistics.hpp>
+	"DescriptiveStatistics.h"
+
+1634968884 d:\development\projects\c++\softwareinteroperability\common\include\descriptivestatistics.h
+	<vector>
+
+1633675985 source:d:\development\projects\c++\softwareinteroperability\common\source\statisticaltests.cpp
+	<iostream>
+	<random>
+	<boost/math/statistics/t_test.hpp>
+	<boost/math/distributions/fisher_f.hpp>
+	"StatisticalTests.h"
+	"DescriptiveStatistics.h"
+
+1633675985 d:\development\projects\c++\softwareinteroperability\common\include\statisticaltests.h
+	<vector>
+	<string>
+	<utility>
+	<unordered_map>
+
+1635767317 source:d:\development\projects\c++\softwareinteroperability\common\source\stats.cpp
+	<iostream>
+	<string>
+	<map>
+	<functional>
+	"Stats.h"
+	"DescriptiveStatistics.h"
+
+1634974366 source:d:\development\projects\c++\softwareinteroperability\common\source\timeseries.cpp
+	<stdexcept>
+	<cmath>
+	"TimeSeries.h"
+
+1633674077 d:\development\projects\c++\softwareinteroperability\common\include\timeseries.h
+	<vector>
+
