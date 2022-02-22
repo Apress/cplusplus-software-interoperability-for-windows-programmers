@@ -1,0 +1,26 @@
+HKCR
+{
+	StatsATLCOM.IStatisticalTest.1 = s 'CTTest class'
+	{
+		CLSID = s '{a67772d3-83c6-4748-87f1-9e94688f5477}'
+	}
+	StatsATLCOM.IStatisticalTest = s 'CTTest class'
+	{		
+		CurVer = s 'StatsATLCOM.IStatisticalTest.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {a67772d3-83c6-4748-87f1-9e94688f5477} = s 'CTTest class'
+		{
+			ProgID = s 'StatsATLCOM.IStatisticalTest.1'
+			VersionIndependentProgID = s 'StatsATLCOM.IStatisticalTest'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{19393278-b368-4b36-91c4-7fb4eb095ccf}'
+			Version = s '1.0'
+		}
+	}
+}

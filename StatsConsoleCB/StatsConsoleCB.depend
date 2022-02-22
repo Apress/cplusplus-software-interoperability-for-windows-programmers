@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1625077653 source:d:\development\projects\c++\softwareinteroperability\statsconsolecb\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<utility>
+	<unordered_map>
+	"..\Common\include\Stats.h"
+	"..\Common\include\DescriptiveStatistics.h"
+	"..\Common\include\DataManager.h"
+	"..\Common\include\StatisticalTests.h"
+
+1632126568 d:\development\projects\c++\softwareinteroperability\common\include\stats.h
+	<vector>
+	<string>
+	<utility>
+	<unordered_map>
+
+1632126569 d:\development\projects\c++\softwareinteroperability\common\include\descriptivestatistics.h
+	<vector>
+
+1628953297 d:\development\projects\c++\softwareinteroperability\common\include\datamanager.h
+	<string>
+	<vector>
+	<utility>
+	<unordered_map>
+
+1632126569 d:\development\projects\c++\softwareinteroperability\common\include\statisticaltests.h
+	<vector>
+	<string>
+	<utility>
+	<unordered_map>
+

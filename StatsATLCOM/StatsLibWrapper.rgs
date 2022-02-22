@@ -1,0 +1,26 @@
+HKCR
+{
+	StatsATLCOM.StatsLibWrapper.1 = s 'StatsLibWrapper class'
+	{
+		CLSID = s '{d81e7eb0-39a8-4785-970b-3f4f5ae68549}'
+	}
+	StatsATLCOM.StatsLibWrapper = s 'StatsLibWrapper class'
+	{		
+		CurVer = s 'StatsATLCOM.StatsLibWrapper.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {d81e7eb0-39a8-4785-970b-3f4f5ae68549} = s 'StatsLibWrapper class'
+		{
+			ProgID = s 'StatsATLCOM.StatsLibWrapper.1'
+			VersionIndependentProgID = s 'StatsATLCOM.StatsLibWrapper'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{19393278-b368-4b36-91c4-7fb4eb095ccf}'
+			Version = s '1.0'
+		}
+	}
+}

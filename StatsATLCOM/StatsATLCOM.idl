@@ -1,0 +1,66 @@
+// StatsATLCOM.idl : IDL source for StatsATLCOM
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (StatsATLCOM.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(78ad298c-fb2a-4435-8614-78a297a72348),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IStatsLibWrapper : IDispatch
+{
+	[id(1), helpstring("Retrieve a package of descriptive statistics")] 
+	HRESULT DescriptiveStatistics([in] VARIANT vData, [in, optional] VARIANT vKeys, [out, retval] VARIANT* pvResults);
+	[id(2), helpstring("Perform simple univariate linear regression: y ~ x, (y = B0 + xB1)")] 
+	HRESULT LinearRegression([in] VARIANT vXs, [in] VARIANT vYs, [out, retval] VARIANT* pvResults);
+};
+[
+	object,
+	uuid(e9d506fb-0dc6-4e80-95a0-60fc7fcedbee),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IStatisticalTest : IDispatch
+{
+	[id(1), helpstring("Summary data t-test")] 
+	HRESULT SummaryDataTTest([in] DOUBLE mu0, [in] DOUBLE xbar, [in] DOUBLE sx, [in] DOUBLE n, [out, retval] VARIANT* pvResults);
+
+	[id(2), helpstring("One-sample t-test")] 
+	HRESULT OneSampleTTest([in] DOUBLE mu0, [in] VARIANT vX1, [out, retval] VARIANT* pvResults);
+
+	[id(3), helpstring("Two-sample t-test")] 
+	HRESULT TwoSampleTTest([in] VARIANT vX1, [in] VARIANT vX2, [out, retval] VARIANT* pvResults);
+};
+[
+	uuid(19393278-b368-4b36-91c4-7fb4eb095ccf),
+	version(1.0),
+]
+library StatsATLCOMLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(d81e7eb0-39a8-4785-970b-3f4f5ae68549)
+	]
+	coclass StatsLibWrapper
+	{
+		[default] interface IStatsLibWrapper;
+	};
+	[
+		uuid(a67772d3-83c6-4748-87f1-9e94688f5477)
+	]
+	coclass CTTest
+	{
+		[default] interface IStatisticalTest;
+	};
+};
+
+import "shobjidl.idl";
+import "shobjidl.idl";
