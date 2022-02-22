@@ -1,0 +1,96 @@
+The following document is a brief summary of the development environment for the SoftwareInteroperability solution and projects. It summarises the major external dependencies: those packages that need to be installed and also the compiler and linker dependencies. This document also covers running the tests. This document can be used as a 'quick start' for those who feel comfortable with the required development tools.
+
+External Dependencies
+- Boost version 1.76
+- Python 3.8
+- Excel (Office16)
+- CodeBlocks 20.03
+- MinGW
+- Rtools4.0
+
+Visual Studio Community Edition 2019 projects
+1. Download SoftwareInteroperability.zip to a temporary location (Downloads)
+2. Unzip the contents to a development directory - the root directory is SoftwareInteroperability
+3. Double-click the SoftwareInteroperability.sln (located in the root directory).
+4. In Visual Studio, select Solution Configurations = Debug, and Solutions Platforms = x64 (screenshot)
+5. Press Ctrl+Shift+B (Rebuild All). The expected result: ========== Build: 13 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+6. Repeat this for Release x64 build. The expected result: ========== Build: 13 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+
+Additional include directories are configurable under the Project settings, Configuration Properties node:
+> C/C++ 
+	Additional Include Directories: 	
+		D:\Users\<user>\Anaconda3\include;
+		$(BOOST_ROOT);
+> Linker
+	Additional Library Directories:
+		D:\Users\<user>\Anaconda3\libs;
+		D:\Development\Libraries\boost_1_76_0\stage\lib;
+
+This assumes the following dependencies are configured:
+Boost
+	Include: $(BOOST_ROOT)
+	Library: D:\Development\Libraries\boost_1_76_0\stage\lib;
+
+Python (all StatsPython... projects)
+	Include: D:\Users\<user>\Anaconda3\include (or wherever your Python.h distribution is located)
+	Library: D:\Users\<user>\Anaconda3\libs;
+
+Excel (for running StatsExcel and StatsATLCOM)
+	Excel location: C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+
+Optional
+Visual Leak Detector (VLD)
+	Library: D:\Program Files (x86)\Visual Leak Detector\lib\Win64;
+	
+The COM component requires registration. Check build settings to determine if this can be done in the post-build step.
+
+Non-Visual Studio projects
+StatsLibCB
+1. Open CodeBlocks and load the StatsLibCB project.
+2. Check the toolchain Setings > Compiler (we depend on a MinGW installation)
+	The toolchain is at (for example): 
+	D:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64
+3. Check dependency on Boost (as above). Configure the Search Directories (Compiler) with: <boost>\boost_1_76_0
+4. Build the CodeBlocks project in debug and release.
+
+StatsR
+1. Double click the StatsR.Rproj project file. This will open RStudio and the project.
+2. Under the menu Build > Configure Build Tools ...
+3. The StatsR package depends on Rtools4.0. 
+	Check environment variable and path: RTOOLS40_HOME=D:\rtools40
+4. Check Rcpp is installed as a package.
+5. Edit Makevars.win with your root directory to the SoftwareInteroperability project:
+	PKG_LIBS=<root>/SoftwareInteroperability/StatsLibCB/bin/Debug/libStatsLib.a
+6. Build > Clean and rebuild.
+7. Source testthat.R. This will run the test suite.
+
+Testing (from Visual Studio Community Edition IDE, set each as the startup project and press F5; launch in debug mode):
+1. Run StatsLibTest.
+2. Run StatsConsole.
+3. Run StatsViewer.
+4. Run StatsCLR.UnitTests.
+5. Run StatsClient.
+6. Run StatsATLCOM - use the test spreadsheet: StatsATLCOMTest.xlsm.
+7. Run StatsExcel - use the test spreadsheet: StatsCLRTest.xlsx.
+
+Testing for the Python related projects using Visual Studio Code.
+8. In VSCode, open the folder /SoftwareInteroperability/StatsPython. There are various scripts that can be used to check the functionality of the three components: StatsPythonRaw, StatsPythonBoost, and StatsPythonPyBind.
+StatsPythonRaw
+a) Run DescriptiveStatistics.py
+b) Run LinearRegression.py
+c) Run HypothesisTests.py
+
+StatsPythonBoost and StatsPythonPyBind
+a) Run StatsPython.py
+	Change the #import as required: 
+		#import StatsPythonPyBind as Stats
+		import StatsPythonBoost as Stats
+b) Run PerformanceTest.py
+c) Run StatsService.py
+
+
+-----------------------
+Still to do:
+
+Prune the zip file
+Add a BuildInstructions.txt to root
