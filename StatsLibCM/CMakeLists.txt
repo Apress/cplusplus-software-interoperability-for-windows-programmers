@@ -26,14 +26,14 @@ endif()
 include( GNUInstallDirs )
 
 # Bring in the Boost headers and headers from the project
-include_directories(${BOOST_ROOT} "D:/Development/Projects/C++/SoftwareInteroperability/Common/include/")
+include_directories(${BOOST_ROOT} "../Common/include/")
 # 
 # Manually add the sources using the set command as follows:
 # set(SOURCES src/wxy.cpp src/xyz.cpp)
 
 # Wildcard additions:
-file(GLOB SOURCES "D:/Development/Projects/C++/SoftwareInteroperability/Common/source/*.cpp")
-file(GLOB HEADERS "D:/Development/Projects/C++/SoftwareInteroperability/Common/include/*.h")
+file(GLOB SOURCES "../Common/source/*.cpp")
+file(GLOB HEADERS "../Common/include/*.h")
 
 # Generate the static library from the sources
 add_library(StatsLibCM STATIC ${SOURCES} ${HEADERS})
