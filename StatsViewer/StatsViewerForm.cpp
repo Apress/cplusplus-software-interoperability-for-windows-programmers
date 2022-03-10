@@ -156,8 +156,10 @@ void CStatsViewerForm::InitialiseListControls()
 		m_lvData.DeleteColumn(0);
 
 	// Recreate
-	m_bIndexColumnAdded = false;
 	m_nLastColumnIndex = 0;
+	m_bIndexColumnAdded = false;
+	m_nMaxRows = 0;
+
 	m_lvData.SetExtendedStyle(LVS_EX_GRIDLINES);
 	m_lvData.InsertColumn(0, _T("Index"), LVCFMT_LEFT, 90);
 
@@ -204,7 +206,7 @@ void CStatsViewerForm::OnRButtonUp(UINT /* nFlags */, CPoint point)
 	OnContextMenu(this, point);
 }
 
-void CStatsViewerForm::OnContextMenu(CWnd* /* pWnd */, CPoint point)
+void CStatsViewerForm::OnContextMenu(CWnd*, CPoint)
 {
 }
 
@@ -622,7 +624,9 @@ void CStatsViewerForm::GetResultsData(CString& strResults) const
 	for (int i = 0; i < itemCount; ++i)
 	{
 		CString strItem;
-		strItem.Format(_T("%s\t%s\n"), m_lvResults.GetItemText(i, 0), m_lvResults.GetItemText(i, 1));
+		CString strItemText0 = m_lvResults.GetItemText(i, 0);
+		CString strItemText1 = m_lvResults.GetItemText(i, 1);
+		strItem.Format(_T("%s\t%s\n"), (LPCTSTR)strItemText0, (LPCTSTR)strItemText1);
 		strResults.Append(strItem);
 	}
 }
@@ -684,7 +688,6 @@ void CStatsViewerForm::PopulateData(const CString& strName)
 	if (addIndices)
 	{
 		std::size_t nPrevMax = m_nMaxRows;
-		std::size_t difference = data.size() - nPrevMax;
 		m_nMaxRows = max(nPrevMax, data.size());
 
 		for (std::size_t i = nPrevMax; i < m_nMaxRows; ++i)
@@ -764,7 +767,7 @@ void CStatsViewerForm::OnUpdateResultsCopy(CCmdUI* pCmdUI)
 	pCmdUI->Enable(hasData);
 }
 
-void CStatsViewerForm::OnSize(UINT nType, int cx, int cy)
+void CStatsViewerForm::OnSize(UINT, int, int)
 {
 	if (m_hWnd != NULL)
 	{
@@ -814,7 +817,6 @@ void CStatsViewerForm::OnSize(UINT nType, int cx, int cy)
 
 void CStatsViewerForm::OnNMRClickListctrlResults(NMHDR* pNMHDR, LRESULT* pResult)
 {
-	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	NM_LISTVIEW* pNMListView = (NM_LISTVIEW*)pNMHDR;
 
 	CMenu menu;

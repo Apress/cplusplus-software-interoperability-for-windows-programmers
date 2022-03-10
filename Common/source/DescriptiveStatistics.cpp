@@ -15,12 +15,16 @@ namespace {
 
 	void check_empty_data(const std::vector<double>& data)
 	{
-		if (data.empty()) throw std::invalid_argument("The data is empty.");
+		if (data.empty()) {
+			throw std::invalid_argument("The data is empty.");
+		}
 	}
 
 	void check_data_size(const std::vector<double>& data, std::size_t expected)
 	{
-		if (data.size() < expected) throw std::invalid_argument("Insufficient data to perform the operation.");
+		if (data.size() < expected) {
+			throw std::invalid_argument("Insufficient data to perform the operation.");
+		}
 	}
 }
 
@@ -62,8 +66,9 @@ namespace Stats::DescriptiveStatistics
 		check_empty_data(values);
 
 		const auto n = values.size();
-		if (1 == n)
+		if (1 == n) { 
 			return values[0];
+		}
 
 		std::vector<double> _values(values);
 		std::sort(std::begin(_values), std::end(_values));
@@ -84,8 +89,7 @@ namespace Stats::DescriptiveStatistics
 	{
 		check_empty_data(values);
 
-		if (values.size() <= 1)
-		{
+		if (values.size() <= 1)	{
 			return 0.0;
 		}
 

@@ -18,7 +18,7 @@ void DebugOut(const char* fmt, ...)
 //
 // Main entry point
 //
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
+BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID)
 {
     char moduleFilename[MAX_PATH];
     GetModuleFileNameA(hModule, moduleFilename, MAX_PATH);

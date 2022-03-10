@@ -147,8 +147,9 @@ namespace Stats
 	bool FTest::Perform()
 	{
 		bool result = false;
-		if (m_test_type == TestType::Unknown)
+		if (m_test_type == TestType::Unknown) {
 			return result;
+		}
 
 		if (m_test_type == TestType::TwoSample)
 		{

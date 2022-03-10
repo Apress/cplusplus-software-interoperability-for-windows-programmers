@@ -15,7 +15,9 @@ namespace {
 
 	void check_same_size(const std::vector<double>& x, const std::vector<double>& y)
 	{
-		if (x.size() != y.size()) throw std::invalid_argument("The datasets are different sizes.");
+		if (x.size() != y.size()) {
+			throw std::invalid_argument("The datasets are different sizes.");
+		}
 	}
 }
 

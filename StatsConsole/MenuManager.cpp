@@ -11,13 +11,13 @@ namespace StatsConsole
     //
 	void MenuManager::PrintMenu() const
 	{
-		std::cout << "\n";
+		std::cout << '\n';
 
 		for (const auto& i : m_menu)
 		{
 			const auto& key = i.first;
 			const auto& item = i.second;
-			std::cout << key << ". " << item.text << "\n";
+			std::cout << key << ". " << item.text << '\n';
 		}
 	}
 
@@ -34,7 +34,12 @@ namespace StatsConsole
 		{
 			if (!selection.empty())
 			{
-				std::transform(selection.begin(), selection.end(), selection.begin(), std::toupper);
+				std::transform(
+                    selection.begin(), 
+                    selection.end(), 
+                    selection.begin(), 
+                    [](unsigned char c) { return static_cast<char>(std::toupper(c)); }
+                );
                 const auto& it = m_menu.find(selection);
                 if (it != m_menu.end())
                 {
@@ -46,7 +51,7 @@ namespace StatsConsole
                     }
                     catch (const std::exception& e)
                     {
-                        std::cout << e.what() << "\n";
+                        std::cout << e.what() << '\n';
                         retval = true;
                     }
                 }

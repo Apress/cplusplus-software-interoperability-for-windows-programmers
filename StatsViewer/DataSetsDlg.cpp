@@ -78,7 +78,7 @@ LRESULT CDataSetsDlg::OnKickIdle(WPARAM /* wParam */, LPARAM /* lParam */)
 void CDataSetsDlg::OnUpdateBtnOk(CCmdUI* pCmdUI)
 {
     const int selection_count = m_lbDataSets.GetSelCount();
-    pCmdUI->Enable(selection_count == m_nMaxSelection);
+    pCmdUI->Enable(static_cast<UINT>(selection_count) == m_nMaxSelection);
 }
 
 //

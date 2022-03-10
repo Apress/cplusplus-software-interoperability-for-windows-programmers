@@ -24,18 +24,6 @@ namespace StatsViewer {
 			TwoSample = 3
 		};
 
-		// Construction
-		TTestParams() = default;
-
-		// Destruction
-		~TTestParams() = default;
-
-		// Copy constructor
-		TTestParams(const TTestParams& other) = default;
-
-		// Assignment operator
-		TTestParams& operator=(const TTestParams& other) = default;
-
 		// Population mean
 		double mu0{ 0.0 };
 
@@ -63,18 +51,6 @@ namespace StatsViewer {
 			SummaryData = 1,
 			TwoSample = 2
 		};
-
-		// Construction
-		FTestParams() = default;
-
-		// Destruction
-		~FTestParams() = default;
-
-		// Copy constructor
-		FTestParams(const FTestParams& other) = default;
-
-		// Assignment operator
-		FTestParams& operator=(const FTestParams& other) = default;
 
 		// Sample standard deviation 1
 		double sx1{ 0.0 };

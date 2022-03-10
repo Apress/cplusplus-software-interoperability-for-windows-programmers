@@ -4,7 +4,7 @@ int main(int argc, char* argv[])
 {
     if (argc < 2) { 
         // We expect 2 arguments: the program name, the data path
-        std::cerr << "Usage: " << argv[0] << " <DataPath>" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <DataPath>" << '\n';
         return 1;
     }
 
@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
     {
         std::filesystem::path p(argv[1]);
         if (p.empty()) {
-            std::cerr << "The <DataPath> argument is empty." << std::endl;
+            std::cerr << "The <DataPath> argument is empty." << '\n';
             return 1;
         }
 

@@ -127,7 +127,7 @@ PYBIND11_MODULE(StatsPythonPyBind, m)
         .def("Perform", &Stats::TTest::Perform, "Perform the t-test.")
         .def("Results", &Stats::TTest::Results, "Retrieve the results.")
         .def("__repr__",
-            [](const Stats::TTest& a) {
+            [](const Stats::TTest&) {
                 return "<example.TTest>";
             }
     );

@@ -31,12 +31,12 @@ namespace StatsConsole
         explicit Output(const std::string& description)
             : m_size(2 * m_separator.length() + description.length())
         { 
-            std::cout << m_separator << description << m_separator << "\n"; 
+            std::cout << m_separator << description << m_separator << '\n'; 
         }
 
         ~Output()
         {  
-            std::cout << std::string(m_size, '=') << "\n";  
+            std::cout << std::string(m_size, '=') << '\n';  
         }
 
     private:
@@ -95,7 +95,7 @@ namespace StatsConsole
     {
         for (const auto& result : results)
         {
-            std::cout << std::setw(15) << result.first << ":\t" << result.second << "\n";
+            std::cout << std::setw(15) << result.first << ":\t" << result.second << '\n';
         }
     }
 
@@ -109,7 +109,7 @@ namespace StatsConsole
     bool OnEnterData(const std::string& prompt)
     {
         std::vector<double> data;
-        std::cout << "\n" << prompt << ":(newline to stop)>\n";
+        std::cout << '\n' << prompt << ":(newline to stop)>\n";
 
         while (true)
         {
@@ -209,7 +209,7 @@ namespace StatsConsole
                 for (std::size_t i = 0; i < data.size(); ++i)
                 {
                     const auto& val = data.at(i);
-                    std::cout << " [" << i << "]\t" << val << "\n";
+                    std::cout << " [" << i << "]\t" << val << '\n';
                 }
             }
             else
@@ -451,7 +451,7 @@ namespace StatsConsole
     // 
     bool OnClose(const std::string& prompt)
     {
-        std::cout << prompt << "\n";
+        std::cout << prompt << '\n';
         return false;
     }
 
@@ -478,7 +478,7 @@ namespace StatsConsole
 //
 // Main entry point
 //
-int main(int argc, char* argv[])
+int main()
 {
 	using namespace StatsConsole;
 
