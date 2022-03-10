@@ -1,4 +1,4 @@
-The following document is a brief summary of the development environment for the SoftwareInteroperability solution and projects. It summarises the major external dependencies: those packages that need to be installed and also the compiler and linker dependencies. This document also covers running the tests. This document can be used as a 'quick start' for those who feel comfortable with the required development tools.
+The following document is a brief summary of the development environment for the SoftwareInteroperability solution and projects. It summarises the major external dependencies: those packages that need to be installed and also the compiler and linker dependencies. This document also covers running the tests. This document can be used as a 'quick start' for those who feel comfortable with the required development tools and environment.
 
 External Dependencies
 - Boost version 1.76
@@ -12,6 +12,38 @@ Visual Studio Community Edition 2019 projects
 1. Download SoftwareInteroperability.zip to a temporary location (Downloads)
 2. Unzip the contents to a development directory - the root directory is SoftwareInteroperability
 3. Double-click the SoftwareInteroperability.sln (located in the root directory).
+In Visual Studio, restore the packages by selecting Tools > NuGet Package Manager > Manage NuGet Packages for Solution...
+At the top of the NuGet - Solution window you should see a message indicating:
+	"Some NuGet packages are missing from this solution. Click to restore from your online package sources."
+This will update the required packages. 
+
+The full set of dependencies with their respective projects are:
+
+StatsExcel
+--------------------------
+ExcelDna.AddIn.1.1.1
+ExcelDna.Integration.1.1.0
+
+StatsLibTest
+--------------------------
+Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.3
+
+StatsClient
+--------------------------
+Accord.3.8.0                                                                             
+Accord.Controls.3.8.0                                                                    
+Accord.IO.3.8.0                                                                          
+Accord.MachineLearning.3.8.0                                                             
+Accord.Math.3.8.0                                                                        
+Accord.Statistics.3.8.0                                                                  
+SharpZipLib.1.3.3                                                                        
+ZedGraph.5.1.7                                                                           
+
+StatsCLR.UnitTests
+--------------------------
+MSTest.TestAdapter.2.2.7                                                                 
+MSTest.TestFramework.2.2.7                                                               
+
 4. In Visual Studio, select Solution Configurations = Debug, and Solutions Platforms = x64 (screenshot)
 5. Press Ctrl+Shift+B (Rebuild All). The expected result: ========== Build: 13 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
 6. Repeat this for Release x64 build. The expected result: ========== Build: 13 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
@@ -42,7 +74,14 @@ Optional
 Visual Leak Detector (VLD)
 	Library: D:\Program Files (x86)\Visual Leak Detector\lib\Win64;
 	
-The COM component requires registration. Check build settings to determine if this can be done in the post-build step.
+The COM component requires registration. 
+If you see the message: 
+"error MSB8011: Failed to register output. Please try enabling Per-user Redirection or register the component from a command prompt with elevated permissions."
+There are various solutions to this issue: https://social.msdn.microsoft.com/Forums/en-US/8094f7a4-0146-41a5-b1b9-1d27ddce9e0f/error-msb8011-failed-to-register-output-please-try-enabling-peruser-redirection-or-register-the?forum=vcgeneral
+
+We use the following:
+In the project's Linker > General property page, set the "Per-User Redirection property" to "Yes".
+This will cause your COM server to be registered in HKCU instead of HKLM.
 
 Non-Visual Studio projects
 StatsLibCB
@@ -87,10 +126,3 @@ a) Run StatsPython.py
 		import StatsPythonBoost as Stats
 b) Run PerformanceTest.py
 c) Run StatsService.py
-
-
------------------------
-Still to do:
-
-Prune the zip file
-Add a BuildInstructions.txt to root
